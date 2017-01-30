@@ -89,6 +89,8 @@ const styles = StyleSheet.create({
 		color: 'gray'
 	},
 	offline: {
+	    flex: 1,
+        width: null,
 		height: 25,
 		backgroundColor: 'orange',
         alignItems: 'center',
