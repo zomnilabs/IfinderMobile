@@ -7,8 +7,7 @@ export default function itemsReducerFactory(types) {
             /** LIST LOAD **/
             case types.LOAD_SUCCESS:
                 console.log('payload', action.payload);
-                return mergeItems(itemsState, action.payload)
-                    .sort(itemComparator);
+                return mergeItems(itemsState, action.payload);
 
             /** ITEM START **/
             case types.CREATE_START:
