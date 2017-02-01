@@ -3,9 +3,15 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, NetInfo, StatusBar } from 'react-native';
 import List from '../../components/List';
 import BuildingItem from '../../components/BuildingItem';
+import MapView from '../../components/MapView';
 import { syncBuildings } from '../../actions/buildings';
 
-class Main extends Component {
+class Rooms extends Component {
+    state = {
+        showMap: false,
+        selectedItem: null
+    };
+
     componentWillMount() {
         NetInfo.addEventListener('change', (reach) =>
             reach !== 'none' && this.props.onRefresh({silent: true})
@@ -13,6 +19,16 @@ class Main extends Component {
     }
 
     render() {
+        if (this.state.showMap &&
+            this.state.selectedItem !== null) {
+
+            return this.renderMapView();
+        }
+
+        return this.renderRoomList();
+    }
+
+    renderRoomList() {
         const { selectedBuilding, status, onRefresh } = this.props;
 
         return (
@@ -31,8 +47,23 @@ class Main extends Component {
         );
     }
 
+    renderMapView() {
+        return (
+            <View style={styles.pageContainer}>
+                <StatusBar backgroundColor="#0288D1" />
+
+                <MapView image_map={this.state.selectedItem.image_map} />
+            </View>
+        )
+    };
+
     onToggle(item) {
-        // this.props.saveTodo({ ...item, completed: !item.completed });
+        console.log(item);
+
+        this.setState({
+            selectedItem: item,
+            showMap: true
+        })
     }
 }
 
@@ -58,4 +89,4 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
     onRefresh: syncBuildings,
-})(Main);
+})(Rooms);
