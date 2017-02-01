@@ -1,12 +1,17 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, NetInfo, StatusBar } from 'react-native';
+import { View, StyleSheet, Text,
+    NetInfo, StatusBar, Button } from 'react-native';
 import List from '../../components/List';
 import BuildingItem from '../../components/BuildingItem';
 import { syncBuildings, saveBuilding } from '../../actions/buildings';
 import { Actions } from 'react-native-router-flux';
 
 class Buildings extends Component {
+    handleViewSiteMap = (e) => {
+        Actions.roomPage({ selectedBuilding: null });
+    };
+
     componentWillMount() {
         NetInfo.addEventListener('change', (reach) =>
             reach !== 'none' && this.props.onRefresh({silent: true})
@@ -15,9 +20,14 @@ class Buildings extends Component {
 
     render() {
         const {buildings, status, onRefresh} = this.props;
+
         return (
             <View style={styles.pageContainer}>
                 <StatusBar backgroundColor="#0288D1" />
+
+                <Button onPress={this.handleViewSiteMap}
+                        color="grey"
+                        title={`View Site Map`} />
 
                 <List
                     items={buildings.items}
@@ -32,7 +42,6 @@ class Buildings extends Component {
     }
 
     onToggle(item) {
-        // this.props.saveTodo({ ...item, completed: !item.completed });
         Actions.roomPage({ selectedBuilding: item });
     }
 }

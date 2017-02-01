@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Image, ActivityIndicator } from 'react-native';
 import RNFS from 'react-native-fs';
+import PhotoView from 'react-native-photo-view';
 
 const IMAGE_HOST = 'http://ifinder-api.zomnilabs.com/images/maps/';
 
@@ -55,8 +56,18 @@ export default class MapView extends Component {
             );
         }
 
+        // return (
+        //     <Image style={styles.image} source={{ uri: `file://${localSource}` }} />
+        // )
+
         return (
-            <Image style={styles.image} source={{ uri: `file://${localSource}` }} />
+            <PhotoView
+                source={{ uri: `file://${localSource}` }}
+                minimumZoomScale={1}
+                maximumZoomScale={3}
+                androidScaleType="fitCenter"
+                onLoad={() => console.log("Image loaded!")}
+                style={styles.image} />
         )
     }
 }
@@ -69,6 +80,6 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        resizeMode: 'contain'
+        // resizeMode: 'contain'
     }
 });

@@ -19,6 +19,10 @@ class Rooms extends Component {
     }
 
     render() {
+        if (this.props.selectedBuilding === null) {
+            return this.renderSiteMap();
+        }
+
         if (this.state.showMap &&
             this.state.selectedItem !== null) {
 
@@ -26,6 +30,16 @@ class Rooms extends Component {
         }
 
         return this.renderRoomList();
+    }
+
+    renderSiteMap() {
+        return (
+            <View style={styles.pageContainer}>
+                <StatusBar backgroundColor="#0288D1" />
+
+                <MapView image_map="sitemap.jpg" />
+            </View>
+        )
     }
 
     renderRoomList() {
