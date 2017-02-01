@@ -6,7 +6,6 @@ export default function itemsReducerFactory(types) {
         switch (action.type) {
             /** LIST LOAD **/
             case types.LOAD_SUCCESS:
-                console.log('payload', action.payload);
                 return mergeItems(itemsState, action.payload);
 
             /** ITEM START **/
