@@ -9,7 +9,7 @@ export default building => (
 		isError(building) && styles.error,
 		styles.row
 ]}>
-		<Text style={[styles.name]}>
+		<Text style={[styles.name]} >
 			{building.name}
 		</Text>
 	</View>
@@ -26,13 +26,15 @@ const styles = StyleSheet.create({
 	},
 	row: {
 		flexDirection: 'row',
-		justifyContent: 'space-between',
+		justifyContent: 'center',
 		paddingHorizontal: 5,
 		marginBottom: 5
 	},
 	name: {
-		width: 100,
-		color: 'black'
+		width: 200,
+		fontSize: 23,
+		color: 'black',
+        textAlign: 'center'
 	},
 	completed: {
 		textDecorationLine: 'line-through'
