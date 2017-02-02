@@ -26,13 +26,17 @@ const styles = StyleSheet.create({
 	},
 	row: {
 		flexDirection: 'row',
-		justifyContent: 'space-between',
+		// justifyContent: 'space-between',
 		paddingHorizontal: 5,
-		marginBottom: 5
+		marginBottom: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+		flex: 1,
+		width: null
 	},
 	name: {
-		width: 100,
-		color: 'black'
+		color: 'black',
+		fontSize: 30
 	},
 	completed: {
 		textDecorationLine: 'line-through'
