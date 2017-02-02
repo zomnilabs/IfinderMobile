@@ -8,16 +8,16 @@ export default class SectionScheduleView extends Component {
         return (
             <View style={styles.container}>
                     <View style={styles.headerTitle}>
-                        <Text style={{ fontSize: 20 }}>{selectedSection.name.toUpperCase()}</Text>
+                        <Text style={{ fontSize: 20, minWidth: 100, textAlign: 'center' }}>{selectedSection.name.toUpperCase()}</Text>
                     </View>
 
                     <View style={styles.header}>
                         <Text style={{ width: 40, marginLeft: 15 }}>Time</Text>
-                        <Text>Mon</Text>
-                        <Text>Tue</Text>
-                        <Text>Wed</Text>
-                        <Text>Thu</Text>
-                        <Text>Fri</Text>
+                        <Text style={styles.textStyle}>Mon</Text>
+                        <Text style={styles.textStyle}>Tue</Text>
+                        <Text style={styles.textStyle}>Wed</Text>
+                        <Text style={styles.textStyle}>Thu</Text>
+                        <Text style={styles.textStyle}>Fri</Text>
                     </View>
 
                     <ScrollView horizontal={true}
@@ -26,92 +26,92 @@ export default class SectionScheduleView extends Component {
 
                         <View style={styles.row}>
                             <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>ESP</Text>
-                            <Text>HR</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>ESP</Text>
+                            <Text style={styles.textStyle}>HR</Text>
                         </View>
 
                         <View style={styles.row}>
                             <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>ESP</Text>
-                            <Text>HR</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>ESP</Text>
+                            <Text style={styles.textStyle}>HR</Text>
                         </View>
 
                         <View style={styles.row}>
                             <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>ESP</Text>
-                            <Text>HR</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>ESP</Text>
+                            <Text style={styles.textStyle}>HR</Text>
                         </View>
 
                         <View style={styles.row}>
                             <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>ESP</Text>
-                            <Text>HR</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>ESP</Text>
+                            <Text style={styles.textStyle}>HR</Text>
                         </View>
 
                         <View style={styles.row}>
                             <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>ESP</Text>
-                            <Text>HR</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>ESP</Text>
+                            <Text style={styles.textStyle}>HR</Text>
                         </View>
 
                         <View style={styles.row}>
                             <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>ESP</Text>
-                            <Text>HR</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>ESP</Text>
+                            <Text style={styles.textStyle}>HR</Text>
                         </View>
 
                         <View style={styles.row}>
                             <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>ESP</Text>
-                            <Text>HR</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>ESP</Text>
+                            <Text style={styles.textStyle}>HR</Text>
                         </View>
 
                         <View style={styles.row}>
                             <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>ESP</Text>
-                            <Text>HR</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>ESP</Text>
+                            <Text style={styles.textStyle}>HR</Text>
                         </View>
 
                         <View style={styles.row}>
                             <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>ESP</Text>
-                            <Text>HR</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>ESP</Text>
+                            <Text style={styles.textStyle}>HR</Text>
                         </View>
 
                         <View style={styles.row}>
                             <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true} minimumFontScale={0.3}>7:30-10:30</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>AP</Text>
-                            <Text>ESP</Text>
-                            <Text>HR</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>AP</Text>
+                            <Text style={styles.textStyle}>ESP</Text>
+                            <Text style={styles.textStyle}>HR</Text>
                         </View>
                     </ScrollView>
             </View>
@@ -156,5 +156,9 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
         minHeight: 35,
         maxHeight: 45
+    },
+    textStyle: {
+        width: 40,
+        textAlign: 'center'
     }
 });

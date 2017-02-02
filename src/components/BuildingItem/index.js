@@ -36,7 +36,9 @@ const styles = StyleSheet.create({
 	},
 	name: {
 		color: 'black',
-		fontSize: 30
+		fontSize: 20,
+        minWidth: 150,
+        textAlign: 'center'
 	},
 	completed: {
 		textDecorationLine: 'line-through'

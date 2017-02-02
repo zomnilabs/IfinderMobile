@@ -53,7 +53,7 @@ export default class List extends Component {
 
 	renderHeader() {
 		const {offline} = this.props.status || {};
-		return offline ? <View style={styles.offline}><Text>No Internet Connection</Text></View> : <View/>;
+		return offline ? <View style={styles.offline}><Text style={{ minWidth: 200, textAlign: 'center' }}>No Internet Connection</Text></View> : <View/>;
 	}
 }
 
