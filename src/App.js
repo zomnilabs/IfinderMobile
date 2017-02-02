@@ -11,6 +11,7 @@ import Rooms from './containers/Buildings/Rooms';
 
 import GradeLevels from './containers/GradeLevels';
 import Sections from './containers/GradeLevels/Sections';
+import SectionSchedule from './containers/GradeLevels/SectionSchedule';
 
 const App = (props) => {
 	return props.status.storageLoaded ? <Routes /> : <View />
@@ -28,6 +29,7 @@ const Routes = () => {
 
                 <Scene key="gradeLevelsPage" title="Grade Levels" component={GradeLevels} />
                 <Scene key="sectionsPage" title="Sections" component={Sections} direction="vertical" />
+                <Scene key="sectionSchedulePage" title="Schedule" component={SectionSchedule} direction="vertical" />
 			</Scene>
 		</Router>
 	)

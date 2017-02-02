@@ -4,8 +4,9 @@ import { View, StyleSheet, Text, NetInfo, StatusBar } from 'react-native';
 import List from '../../components/List';
 import BuildingItem from '../../components/BuildingItem';
 import { syncGradeLevels } from '../../actions/gradeLevels';
+import { Actions } from 'react-native-router-flux';
 
-class Main extends Component {
+class Sections extends Component {
     componentWillMount() {
         NetInfo.addEventListener('change', (reach) =>
             reach !== 'none' && this.props.onRefresh({silent: true})
@@ -32,7 +33,7 @@ class Main extends Component {
     }
 
     onToggle(item) {
-        // this.props.saveTodo({ ...item, completed: !item.completed });
+        Actions.sectionSchedulePage({ selectedSection: item });
     }
 }
 
@@ -58,4 +59,4 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
     onRefresh: syncGradeLevels,
-})(Main);
+})(Sections);
