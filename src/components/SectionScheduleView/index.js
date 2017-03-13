@@ -1,9 +1,43 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Text, StyleSheet } from 'react-native';
 
+const days = ['mon', 'tue', 'wed', 'thu', 'fri'];
+
 export default class SectionScheduleView extends Component {
     render() {
         const { selectedSection } = this.props;
+        const schedules = selectedSection.schedules;
+        console.log(selectedSection);
+
+        let finalSchedules = [];
+
+        for (let schedule of schedules) {
+            let currentTime = `${schedule.time_start}-${schedule.time_end}`;
+            let findSchedule = finalSchedules.findIndex((item) => item.time === currentTime);
+
+            if (findSchedule < 0) {
+                finalSchedules.push({
+                    time: currentTime
+                });
+
+                findSchedule = finalSchedules.length - 1;
+            } else {
+                finalSchedules[findSchedule]["time"] = currentTime;
+            }
+
+            for (let day of days) {
+                let scheduleDays = JSON.parse(schedule.days);
+                let findDay = scheduleDays.findIndex((item) => item === day);
+
+                if (findDay < 0) {
+                    continue;
+                }
+
+                finalSchedules[findSchedule][day] = String(schedule.subject.code);
+            }
+        }
+
+        console.log(finalSchedules);
 
         return (
             <View style={styles.container}>
@@ -20,99 +54,48 @@ export default class SectionScheduleView extends Component {
                         <Text style={styles.textStyle}>Fri</Text>
                     </View>
 
-                    <ScrollView horizontal={true}
-                                style={{ height: 300 }}
-                                contentContainerStyle={styles.rows}>
+                    <ScrollView>
 
-                        <View style={styles.row}>
-                            <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>ESP</Text>
-                            <Text style={styles.textStyle}>HR</Text>
-                        </View>
+                        {finalSchedules.map((schedule, i) => {
+                            let oneSubject = false;
 
-                        <View style={styles.row}>
-                            <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>ESP</Text>
-                            <Text style={styles.textStyle}>HR</Text>
-                        </View>
+                            if (schedule.mon === 'RECESS') {
+                                return (
+                                    <View style={styles.row} key={i}>
+                                        <Text style={{ maxWidth: 75, fontSize: 13 }} adjustsFontSizeToFit={true}>{schedule.time}</Text>
+                                        <Text style={styles.textStyle}>R</Text>
+                                        <Text style={styles.textStyle}>E</Text>
+                                        <Text style={styles.textStyle}>C</Text>
+                                        <Text style={styles.textStyle}>E</Text>
+                                        <Text style={styles.textStyle}>SS</Text>
+                                    </View>
+                                )
+                            }
 
-                        <View style={styles.row}>
-                            <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>ESP</Text>
-                            <Text style={styles.textStyle}>HR</Text>
-                        </View>
+                            if (schedule.mon === 'LUNCH') {
+                                return (
+                                    <View style={styles.row} key={i}>
+                                        <Text style={{ maxWidth: 75, fontSize: 13 }} adjustsFontSizeToFit={true}>{schedule.time}</Text>
+                                        <Text style={styles.textStyle}>L</Text>
+                                        <Text style={styles.textStyle}>U</Text>
+                                        <Text style={styles.textStyle}>N</Text>
+                                        <Text style={styles.textStyle}>C</Text>
+                                        <Text style={styles.textStyle}>H</Text>
+                                    </View>
+                                )
+                            }
 
-                        <View style={styles.row}>
-                            <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>ESP</Text>
-                            <Text style={styles.textStyle}>HR</Text>
-                        </View>
-
-                        <View style={styles.row}>
-                            <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>ESP</Text>
-                            <Text style={styles.textStyle}>HR</Text>
-                        </View>
-
-                        <View style={styles.row}>
-                            <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>ESP</Text>
-                            <Text style={styles.textStyle}>HR</Text>
-                        </View>
-
-                        <View style={styles.row}>
-                            <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>ESP</Text>
-                            <Text style={styles.textStyle}>HR</Text>
-                        </View>
-
-                        <View style={styles.row}>
-                            <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>ESP</Text>
-                            <Text style={styles.textStyle}>HR</Text>
-                        </View>
-
-                        <View style={styles.row}>
-                            <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true}>7:30-8:30</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>ESP</Text>
-                            <Text style={styles.textStyle}>HR</Text>
-                        </View>
-
-                        <View style={styles.row}>
-                            <Text style={{ maxWidth: 60 }} adjustsFontSizeToFit={true} minimumFontScale={0.3}>7:30-10:30</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>AP</Text>
-                            <Text style={styles.textStyle}>ESP</Text>
-                            <Text style={styles.textStyle}>HR</Text>
-                        </View>
+                            return (
+                                <View style={styles.row} key={i}>
+                                    <Text style={{ maxWidth: 75, fontSize: 13 }} adjustsFontSizeToFit={true}>{schedule.time}</Text>
+                                    <Text style={styles.textStyle}>{schedule.mon}</Text>
+                                    <Text style={styles.textStyle}>{schedule.tue}</Text>
+                                    <Text style={styles.textStyle}>{schedule.wed}</Text>
+                                    <Text style={styles.textStyle}>{schedule.thu}</Text>
+                                    <Text style={styles.textStyle}>{schedule.fri}</Text>
+                                </View>
+                            )
+                        })}
                     </ScrollView>
             </View>
         )
@@ -154,11 +137,13 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingTop: 5,
         paddingBottom: 5,
-        minHeight: 35,
-        maxHeight: 45
     },
     textStyle: {
-        width: 40,
+        width: 50,
+        textAlign: 'center',
+        fontSize: 12
+    },
+    textStyle2: {
         textAlign: 'center'
     }
 });

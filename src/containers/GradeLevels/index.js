@@ -59,5 +59,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-    onRefresh: syncGradeLevels()
+    onRefresh: syncGradeLevels
 })(GradeLevels);
