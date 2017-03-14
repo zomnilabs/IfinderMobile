@@ -6,6 +6,7 @@ import { Actions } from 'react-native-router-flux';
 
 import { syncBuildings } from '../../actions/buildings';
 import { syncGradeLevels } from '../../actions/gradeLevels';
+import { syncFaculties } from '../../actions/faculties';
 
 class Main extends Component {
 	componentWillMount() {
@@ -17,6 +18,9 @@ class Main extends Component {
 
             // Sync Grade Levels Data
             this.props.syncGradeLevels();
+
+            // Sync faculties
+            this.props.syncFaculties();
         });
 	}
 
@@ -25,7 +29,7 @@ class Main extends Component {
     };
 
 	handleFacultyPress = () => {
-
+        Actions.facultiesPage();
     };
 
     handleBuildingsPress = () => {
@@ -114,5 +118,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
     syncBuildings,
-    syncGradeLevels
+    syncGradeLevels,
+    syncFaculties
 })(Main);
