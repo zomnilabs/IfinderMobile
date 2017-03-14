@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { View, StyleSheet, Text,
-    NetInfo, StatusBar, Button } from 'react-native';
+import { View, StyleSheet, Text, NetInfo, StatusBar } from 'react-native';
 import List from '../../components/List';
-import BuildingItem from '../../components/BuildingItem';
-import { syncFaculties, saveFaculty } from '../../actions/faculties';
+import PersonItem from '../../components/PersonItem';
+import { syncFaculties } from '../../actions/faculties';
 import { Actions } from 'react-native-router-flux';
 
-class Faculties extends Component {
+class Persons extends Component {
     componentWillMount() {
         NetInfo.addEventListener('change', (reach) =>
             reach !== 'none' && this.props.onRefresh({silent: true})
@@ -15,18 +14,18 @@ class Faculties extends Component {
     }
 
     render() {
-        const {faculties, status, onRefresh} = this.props;
-        console.log(faculties);
+        const { selectedFaculty, status, onRefresh } = this.props;
+
         return (
             <View style={styles.pageContainer}>
                 <StatusBar backgroundColor="#0288D1" />
 
                 <List
-                    items={faculties.items}
+                    items={selectedFaculty.people}
                     status={status}
-                    renderItem={item => <BuildingItem {...item} />}
+                    renderItem={item => <PersonItem {...item} />}
                     onItemSelect={this.onToggle.bind(this)}
-                    placeholder="There are no faculties yet"
+                    placeholder="There are no member on this faculty"
                     onRefresh={onRefresh}
                 />
             </View>
@@ -34,7 +33,7 @@ class Faculties extends Component {
     }
 
     onToggle(item) {
-        Actions.personPage({ selectedFaculty: item });
+        // Actions.sectionSchedulePage({ selectedSection: item });
     }
 }
 
@@ -55,11 +54,9 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    faculties: state.faculties,
-    status: state.faculties.status
+    status: state.gradeLevels.status
 });
 
 export default connect(mapStateToProps, {
     onRefresh: syncFaculties,
-    saveFaculty
-})(Faculties);
+})(Persons);

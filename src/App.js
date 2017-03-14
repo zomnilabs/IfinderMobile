@@ -14,6 +14,7 @@ import Sections from './containers/GradeLevels/Sections';
 import SectionSchedule from './containers/GradeLevels/SectionSchedule';
 
 import Faculties from './containers/Faculties';
+import Persons from './containers/Faculties/Persons';
 
 const App = (props) => {
 	return props.status.storageLoaded ? <Routes /> : <View />
@@ -34,6 +35,7 @@ const Routes = () => {
                 <Scene key="sectionSchedulePage" title="Schedule" component={SectionSchedule} direction="vertical" />
 
 				<Scene key="facultiesPage" title="Faculties" component={Faculties} />
+				<Scene key="personPage" title="Faculty Members" component={Persons} />
 			</Scene>
 		</Router>
 	)
