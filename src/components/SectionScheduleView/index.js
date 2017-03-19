@@ -9,6 +9,7 @@ export default class SectionScheduleView extends Component {
         const schedules = selectedSection.schedules;
 
         let finalSchedules = [];
+        let subjects = [];
 
         for (let schedule of schedules) {
             let currentTime = `${schedule.time_start}-${schedule.time_end}`;
@@ -33,6 +34,15 @@ export default class SectionScheduleView extends Component {
                 }
 
                 finalSchedules[findSchedule][day] = String(schedule.subject.code);
+            }
+
+            // Check subject
+            let subjectIndex = subjects.findIndex((subject) => {
+                return subject.code === schedule.subject.code;
+            });
+
+            if (subjectIndex < 0) {
+                subjects.push(schedule.subject);
             }
         }
 
@@ -97,6 +107,12 @@ export default class SectionScheduleView extends Component {
                         <View style={styles.legendTitle}>
                             <Text style={{ fontSize: 15, minWidth: 100, textAlign: 'center' }}>LEGENDS</Text>
                         </View>
+
+                        <View style={styles.legendContainer}>
+                            {subjects.map((subject, i) => {
+                                return <Text key={i}>{`${subject.code} - ${subject.name}`}</Text>
+                            })}
+                        </View>
                     </ScrollView>
             </View>
         )
@@ -128,6 +144,9 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         maxHeight: 30,
         backgroundColor: '#ffc36d'
+    },
+    legendContainer: {
+        flex: 1
     },
     header: {
         flex: 6,
