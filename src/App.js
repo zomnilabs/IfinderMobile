@@ -15,6 +15,7 @@ import SectionSchedule from './containers/GradeLevels/SectionSchedule';
 
 import Faculties from './containers/Faculties';
 import Persons from './containers/Faculties/Persons';
+import FacultySchedule from './containers/Faculties/FacultySchedule';
 
 const scenes = Actions.create(
     <Scene key="root">
@@ -28,6 +29,7 @@ const scenes = Actions.create(
 
         <Scene key="facultiesPage" title="Faculties" component={Faculties} />
         <Scene key="personPage" title="Faculty Members" component={Persons} />
+        <Scene key="facultySchedulePage" title="Schedule" component={FacultySchedule} />
     </Scene>
 );
 

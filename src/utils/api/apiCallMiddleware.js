@@ -1,7 +1,7 @@
 import { HttpError, NetworkError } from './errors';
 
-const HOST = 'http://ifinder-api.zomnilabs.com/v1/';
-// const HOST = 'http://192.168.0.16:8000/v1/';
+// const HOST = 'http://ifinder-api.zomnilabs.com/v1/';
+const HOST = 'http://192.168.0.16:8000/v1/';
 
 export const apiCallMiddleware = ({ dispatch, getState }) => {
 	return next => action =>

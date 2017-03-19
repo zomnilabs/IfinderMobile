@@ -33,7 +33,7 @@ class Persons extends Component {
     }
 
     onToggle(item) {
-        // Actions.sectionSchedulePage({ selectedSection: item });
+        Actions.facultySchedulePage({ selectedPerson: item });
     }
 }
 
