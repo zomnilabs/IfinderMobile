@@ -13,6 +13,13 @@ class Persons extends Component {
         );
     }
 
+    componentWillUnmount() {
+        NetInfo.removeEventListener(
+            'change',
+            (reach) => reach !== 'none' && this.props.onRefresh({silent: true})
+        );
+    }
+
     render() {
         const { selectedFaculty, status, onRefresh } = this.props;
 

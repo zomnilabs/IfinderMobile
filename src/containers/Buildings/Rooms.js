@@ -18,6 +18,13 @@ class Rooms extends Component {
         );
     }
 
+    componentWillUnmount() {
+        NetInfo.removeEventListener(
+            'change',
+            (reach) => reach !== 'none' && this.props.onRefresh({silent: true})
+        );
+    }
+
     render() {
         if (this.props.selectedBuilding === null) {
             return this.renderSiteMap();
