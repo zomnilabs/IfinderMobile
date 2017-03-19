@@ -14,6 +14,13 @@ class Faculties extends Component {
         );
     }
 
+    componentWillUnmount() {
+        NetInfo.removeEventListener(
+            'change',
+            (reach) => reach !== 'none' && this.props.onRefresh({silent: true})
+        );
+    }
+
     render() {
         const {faculties, status, onRefresh} = this.props;
         console.log(faculties);

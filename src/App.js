@@ -1,7 +1,7 @@
-import React from 'react';
-import { Component, View, StyleSheet } from 'react-native'
+import React, { Component } from 'react';
+import { View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux';
-import { Router, Scene } from 'react-native-router-flux';
+import { Actions, Router, Scene } from 'react-native-router-flux';
 
 // const ConnectedRouter = connect()(Router);
 
@@ -16,30 +16,42 @@ import SectionSchedule from './containers/GradeLevels/SectionSchedule';
 import Faculties from './containers/Faculties';
 import Persons from './containers/Faculties/Persons';
 
-const App = (props) => {
-	return props.status.storageLoaded ? <Routes /> : <View />
-};
+const scenes = Actions.create(
+    <Scene key="root">
+        <Scene key="mainPage" component={Main} title="iFinder" initial={true} />
+        <Scene key="buildingsPage" title="Buildings" component={Buildings} />
+        <Scene key="roomPage" title="Rooms" component={Rooms} direction="vertical" />
+
+        <Scene key="gradeLevelsPage" title="Grade Levels" component={GradeLevels} />
+        <Scene key="sectionsPage" title="Sections" component={Sections} direction="vertical" />
+        <Scene key="sectionSchedulePage" title="Schedule" component={SectionSchedule} direction="vertical" />
+
+        <Scene key="facultiesPage" title="Faculties" component={Faculties} />
+        <Scene key="personPage" title="Faculty Members" component={Persons} />
+    </Scene>
+);
 
 const Routes = () => {
-	return (
-		<Router navigationBarStyle={styles.navBar}
+    return (
+        <Router navigationBarStyle={styles.navBar}
                 leftButtonIconStyle={styles.leftButtonIconStyle}
-                titleStyle={styles.navBarTitle}>
-			<Scene key="root">
-				<Scene key="mainPage" component={Main} title="iFinder" initial={true} />
-                <Scene key="buildingsPage" title="Buildings" component={Buildings} />
-                <Scene key="roomPage" title="Rooms" component={Rooms} direction="vertical" />
-
-                <Scene key="gradeLevelsPage" title="Grade Levels" component={GradeLevels} />
-                <Scene key="sectionsPage" title="Sections" component={Sections} direction="vertical" />
-                <Scene key="sectionSchedulePage" title="Schedule" component={SectionSchedule} direction="vertical" />
-
-				<Scene key="facultiesPage" title="Faculties" component={Faculties} />
-				<Scene key="personPage" title="Faculty Members" component={Persons} />
-			</Scene>
-		</Router>
-	)
+                titleStyle={styles.navBarTitle}
+                scenes={scenes}
+        />
+    )
 };
+
+class App extends Component {
+    render() {
+        const { status } = this.props;
+
+        if (status.storageLoaded) {
+            return <Routes />;
+        }
+
+        return <View />;
+    }
+}
 
 const styles = StyleSheet.create({
     navBar: {

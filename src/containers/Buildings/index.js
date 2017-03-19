@@ -18,6 +18,13 @@ class Buildings extends Component {
         );
     }
 
+    componentWillUnmount() {
+        NetInfo.removeEventListener(
+            'change',
+            (reach) => reach !== 'none' && this.props.onRefresh({silent: true})
+        );
+    }
+
     render() {
         const {buildings, status, onRefresh} = this.props;
 

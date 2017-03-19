@@ -7,7 +7,6 @@ export default class SectionScheduleView extends Component {
     render() {
         const { selectedSection } = this.props;
         const schedules = selectedSection.schedules;
-        console.log(selectedSection);
 
         let finalSchedules = [];
 
@@ -37,12 +36,10 @@ export default class SectionScheduleView extends Component {
             }
         }
 
-        console.log(finalSchedules);
-
         return (
             <View style={styles.container}>
                     <View style={styles.headerTitle}>
-                        <Text style={{ fontSize: 20, minWidth: 100, textAlign: 'center' }}>{selectedSection.name.toUpperCase()}</Text>
+                        <Text style={{ fontSize: 15, minWidth: 100, textAlign: 'center' }}>{selectedSection.name.toUpperCase()}</Text>
                     </View>
 
                     <View style={styles.header}>
@@ -96,6 +93,10 @@ export default class SectionScheduleView extends Component {
                                 </View>
                             )
                         })}
+
+                        <View style={styles.legendTitle}>
+                            <Text style={{ fontSize: 15, minWidth: 100, textAlign: 'center' }}>LEGENDS</Text>
+                        </View>
                     </ScrollView>
             </View>
         )
@@ -114,8 +115,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: 10,
-        paddingBottom: 20,
-        maxHeight: 50
+        paddingBottom: 10,
+        maxHeight: 30,
+        backgroundColor: '#ffdb69'
+    },
+    legendTitle: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 10,
+        paddingBottom: 10,
+        maxHeight: 30,
+        backgroundColor: '#ffc36d'
     },
     header: {
         flex: 6,
