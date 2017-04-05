@@ -6,6 +6,7 @@ import { Actions, Router, Scene } from 'react-native-router-flux';
 // const ConnectedRouter = connect()(Router);
 
 import Main from './containers/Main';
+import Search from './containers/Search';
 import Buildings from './containers/Buildings';
 import Rooms from './containers/Buildings/Rooms';
 
@@ -20,6 +21,7 @@ import FacultySchedule from './containers/Faculties/FacultySchedule';
 const scenes = Actions.create(
     <Scene key="root">
         <Scene key="mainPage" component={Main} title="iFinder" initial={true} />
+        <Scene key="searchPage" component={Search} />
         <Scene key="buildingsPage" title="Buildings" component={Buildings} />
         <Scene key="roomPage" title="Rooms" component={Rooms} direction="vertical" />
 
