@@ -25,6 +25,7 @@ class Main extends Component {
 
             if (! isConnected) {
                 alert('Please connect your mobile phone to internet, to get new and updated data');
+                this.setState({ loading: false });
                 
                 return;
             }
